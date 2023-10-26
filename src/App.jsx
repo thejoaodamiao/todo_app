@@ -40,6 +40,18 @@ function App() {
     setTodos(newTodos)
   }
 
+  const removeTodo = (id)=>{
+    const newTodos = [...todos];
+    const filteredTodos = newTodos.filter((todo) => todo.id !== id  ? todo : null);
+    setTodos(filteredTodos);
+  }
+
+  const completeTodo = (id)=>{
+    const newTodos = [...todos];
+    newTodos.map((todo) => todo.id === id ? todo.isCompleted = !todo.isCompleted : todo);
+    setTodos(newTodos);
+  }
+
   return (
     
    <div className='App'>
@@ -47,11 +59,10 @@ function App() {
     <div className='todo-list'>
       {todos.map((todo)=>(
         // eslint-disable-next-line react/jsx-key
-        <Todo key={todo.id} todo={todo}/>
+        <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo}/>
       ))}
-    <TodoForms addTodo={addTodo}/>
     </div>
-
+    <TodoForms addTodo={addTodo} />
    </div>
   )
 }
