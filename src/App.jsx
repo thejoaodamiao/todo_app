@@ -29,6 +29,17 @@ function App() {
     },
   ])
 
+  const addTodo = (text, category) =>{
+
+    const newTodos = [...todos, {
+      id:Math.floor(Math.random()*10000),
+      text,
+      category,
+      isCompleted:false
+    }]
+    setTodos(newTodos)
+  }
+
   return (
     
    <div className='App'>
@@ -38,7 +49,7 @@ function App() {
         // eslint-disable-next-line react/jsx-key
         <Todo key={todo.id} todo={todo}/>
       ))}
-    <TodoForms/>
+    <TodoForms addTodo={addTodo}/>
     </div>
 
    </div>

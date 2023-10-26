@@ -1,7 +1,9 @@
+
 //componente de criação de tarefas
 import { useState } from "react"
 
-const TodoForms = () => {
+// eslint-disable-next-line react/prop-types
+const TodoForms = ({ addTodo }) => {
 //valores iniciais e setters de estado
  const[value, setValue] = useState("");
  const[category, setCategory] = useState("");
@@ -12,6 +14,7 @@ const handleSubmit = (e)=>{
 
   if(!value || !category) return;
 
+  addTodo(value, category)
   setCategory("");
   setValue("");
  }
